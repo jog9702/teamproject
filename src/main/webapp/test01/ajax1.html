@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	function fn_process(){
+		var val = $("#param1").val();
+		
+		var option = {
+			"type": "get",
+			dataType: "text",
+			url: "/pro15/ajaxTest1",
+			data: { param: val },
+			success: function (data1, textStatus){
+				$("#result").html(data1);
+			}
+		}
+		
+		$.ajax( option );
+	}
+	
+	$(document).ready(function() {
+		$("#btn").off("click").on("click", function(){
+			fn_process();
+		});
+	})
+</script>
+</head>
+<body>
+	<input type="text" id="param1">
+	<input type="button" id="btn" value="전송">
+	<div id="result">
+	</div>
+</body>
+</html>
